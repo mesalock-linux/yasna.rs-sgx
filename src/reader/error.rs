@@ -6,6 +6,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use std::prelude::v1::*;
 use std::error::Error;
 use std::fmt::{self,Display};
 use std::io;
@@ -35,7 +36,7 @@ impl ASN1Error {
 
 impl Display for ASN1Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
-        try!(write!(f, "{:?}", self));
+        write!(f, "{:?}", self)?;
         return Ok(());
     }
 }

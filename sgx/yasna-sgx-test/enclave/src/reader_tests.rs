@@ -7,15 +7,18 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-#[cfg(feature = "num-bigint")]
+//#[cfg(feature = "num-bigint")]
+use std::prelude::v1::*;
 use num_bigint::{BigUint, BigInt};
 
-use super::super::Tag;
-use super::super::tags::TAG_SEQUENCE;
-use super::*;
+use yasna::models::TaggedDerValue;
+use yasna::Tag;
+use yasna::tags::TAG_SEQUENCE;
+use yasna::*;
+//use yasna::reader::*;
 
-#[test]
-fn test_der_read_bool_ok() {
+//#[test]
+pub fn test_der_read_bool_ok() {
     let tests : &[(bool, &[u8])] = &[
         (false, &[1, 1, 0]),
         (true, &[1, 1, 255]),
@@ -28,8 +31,8 @@ fn test_der_read_bool_ok() {
     }
 }
 
-#[test]
-fn test_der_read_bool_err() {
+//#[test]
+pub fn test_der_read_bool_err() {
     let tests : &[&[u8]] = &[
         &[], &[1], &[0, 0], &[0, 1, 0], &[2, 1, 0], &[33, 1, 0], &[65, 1, 0],
         &[1, 0], &[1, 2, 0, 0], &[1, 128, 1, 1, 0, 0, 0],
@@ -42,8 +45,8 @@ fn test_der_read_bool_err() {
     }
 }
 
-#[test]
-fn test_ber_read_bool_ok() {
+//#[test]
+pub fn test_ber_read_bool_ok() {
     let tests : &[(bool, &[u8])] = &[
         (false, &[1, 1, 0]),
         (true, &[1, 1, 1]),
@@ -59,8 +62,8 @@ fn test_ber_read_bool_ok() {
     }
 }
 
-#[test]
-fn test_ber_read_bool_err() {
+//#[test]
+pub fn test_ber_read_bool_err() {
     let tests : &[&[u8]] = &[
         &[], &[1], &[0, 0], &[0, 1, 0], &[2, 1, 0], &[33, 1, 0], &[65, 1, 0],
         &[1, 0], &[1, 2, 0, 0], &[1, 128, 1, 1, 0, 0, 0],
@@ -72,23 +75,23 @@ fn test_ber_read_bool_err() {
     }
 }
 
-#[test]
-fn test_der_read_i64_ok() {
+//#[test]
+pub fn test_der_read_i64_ok() {
     test_general_read_i64_ok(BERMode::Der);
 }
 
-#[test]
-fn test_der_read_i64_err() {
+//#[test]
+pub fn test_der_read_i64_err() {
     test_general_read_i64_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_i64_ok() {
+//#[test]
+pub fn test_ber_read_i64_ok() {
     test_general_read_i64_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_i64_err() {
+//#[test]
+pub fn test_ber_read_i64_err() {
     test_general_read_i64_err(BERMode::Ber);
 }
 
@@ -138,23 +141,23 @@ fn test_general_read_i64_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_u64_ok() {
+//#[test]
+pub fn test_der_read_u64_ok() {
     test_general_read_u64_ok(BERMode::Der);
 }
 
-#[test]
-fn test_der_read_u64_err() {
+//#[test]
+pub fn test_der_read_u64_err() {
     test_general_read_u64_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_u64_ok() {
+//#[test]
+pub fn test_ber_read_u64_ok() {
     test_general_read_u64_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_u64_err() {
+//#[test]
+pub fn test_ber_read_u64_err() {
     test_general_read_u64_err(BERMode::Ber);
 }
 
@@ -199,23 +202,23 @@ fn test_general_read_u64_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_i32_ok() {
+//#[test]
+pub fn test_der_read_i32_ok() {
     test_general_read_i32_ok(BERMode::Der);
 }
 
-#[test]
-fn test_der_read_i32_err() {
+//#[test]
+pub fn test_der_read_i32_err() {
     test_general_read_i32_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_i32_ok() {
+//#[test]
+pub fn test_ber_read_i32_ok() {
     test_general_read_i32_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_i32_err() {
+//#[test]
+pub fn test_ber_read_i32_err() {
     test_general_read_i32_err(BERMode::Ber);
 }
 
@@ -265,18 +268,18 @@ fn test_general_read_i32_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_u32_err() {
+//#[test]
+pub fn test_der_read_u32_err() {
     test_general_read_u32_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_u32_ok() {
+//#[test]
+pub fn test_ber_read_u32_ok() {
     test_general_read_u32_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_u32_err() {
+//#[test]
+pub fn test_ber_read_u32_err() {
     test_general_read_u32_err(BERMode::Ber);
 }
 
@@ -320,23 +323,23 @@ fn test_general_read_u32_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_i16_ok() {
+//#[test]
+pub fn test_der_read_i16_ok() {
     test_general_read_i16_ok(BERMode::Der);
 }
 
-#[test]
-fn test_der_read_i16_err() {
+//#[test]
+pub fn test_der_read_i16_err() {
     test_general_read_i16_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_i16_ok() {
+//#[test]
+pub fn test_ber_read_i16_ok() {
     test_general_read_i16_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_i16_err() {
+//#[test]
+pub fn test_ber_read_i16_err() {
     test_general_read_i16_err(BERMode::Ber);
 }
 
@@ -376,23 +379,23 @@ fn test_general_read_i16_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_u16_ok() {
+//#[test]
+pub fn test_der_read_u16_ok() {
     test_general_read_u16_ok(BERMode::Der);
 }
 
-#[test]
-fn test_der_read_u16_err() {
+//#[test]
+pub fn test_der_read_u16_err() {
     test_general_read_u16_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_u16_ok() {
+//#[test]
+pub fn test_ber_read_u16_ok() {
     test_general_read_u16_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_u16_err() {
+//#[test]
+pub fn test_ber_read_u16_err() {
     test_general_read_u16_err(BERMode::Ber);
 }
 
@@ -429,23 +432,23 @@ fn test_general_read_u16_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_i8_ok() {
+//#[test]
+pub fn test_der_read_i8_ok() {
     test_general_read_i8_ok(BERMode::Der);
 }
 
-#[test]
-fn test_der_read_i8_err() {
+//#[test]
+pub fn test_der_read_i8_err() {
     test_general_read_i8_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_i8_ok() {
+//#[test]
+pub fn test_ber_read_i8_ok() {
     test_general_read_i8_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_i8_err() {
+//#[test]
+pub fn test_ber_read_i8_err() {
     test_general_read_i8_err(BERMode::Ber);
 }
 
@@ -480,23 +483,23 @@ fn test_general_read_i8_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_u8_ok() {
+//#[test]
+pub fn test_der_read_u8_ok() {
     test_general_read_u8_ok(BERMode::Der);
 }
 
-#[test]
-fn test_der_read_u8_err() {
+//#[test]
+pub fn test_der_read_u8_err() {
     test_general_read_u8_err(BERMode::Der);
 }
 
-#[test]
-fn test_ber_read_u8_ok() {
+//#[test]
+pub fn test_ber_read_u8_ok() {
     test_general_read_u8_ok(BERMode::Ber);
 }
 
-#[test]
-fn test_ber_read_u8_err() {
+//#[test]
+pub fn test_ber_read_u8_err() {
     test_general_read_u8_err(BERMode::Ber);
 }
 
@@ -531,31 +534,31 @@ fn test_general_read_u8_err(mode: BERMode) {
     }
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_der_read_bigint_ok() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_der_read_bigint_ok() {
     test_general_read_bigint_ok(BERMode::Der);
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_der_read_bigint_err() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_der_read_bigint_err() {
     test_general_read_bigint_err(BERMode::Der);
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_ber_read_bigint_ok() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_ber_read_bigint_ok() {
     test_general_read_bigint_ok(BERMode::Ber);
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_ber_read_bigint_err() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_ber_read_bigint_err() {
     test_general_read_bigint_err(BERMode::Ber);
 }
 
-#[cfg(feature = "num-bigint")]
+//#[cfg(feature = "num-bigint")]
 fn test_general_read_bigint_ok(mode: BERMode) {
     use num_traits::FromPrimitive;
     let tests : &[(i64, &[u8])] = &[
@@ -610,7 +613,7 @@ fn test_general_read_bigint_ok(mode: BERMode) {
     }
 }
 
-#[cfg(feature = "num-bigint")]
+//#[cfg(feature = "num-bigint")]
 fn test_general_read_bigint_err(mode: BERMode) {
     let tests : &[&[u8]] = &[
         &[], &[2], &[0, 0], &[0, 1, 0], &[1, 1, 0], &[34, 1, 0], &[66, 1, 0],
@@ -625,31 +628,31 @@ fn test_general_read_bigint_err(mode: BERMode) {
     }
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_der_read_biguint_ok() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_der_read_biguint_ok() {
     test_general_read_biguint_ok(BERMode::Der);
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_der_read_biguint_err() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_der_read_biguint_err() {
     test_general_read_biguint_err(BERMode::Der);
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_ber_read_biguint_ok() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_ber_read_biguint_ok() {
     test_general_read_biguint_ok(BERMode::Ber);
 }
 
-#[cfg(feature = "num-bigint")]
-#[test]
-fn test_ber_read_biguint_err() {
+//#[cfg(feature = "num-bigint")]
+//#[test]
+pub fn test_ber_read_biguint_err() {
     test_general_read_biguint_err(BERMode::Ber);
 }
 
-#[cfg(feature = "num-bigint")]
+//#[cfg(feature = "num-bigint")]
 fn test_general_read_biguint_ok(mode: BERMode) {
     use num_traits::FromPrimitive;
     let tests : &[(u64, &[u8])] = &[
@@ -690,7 +693,7 @@ fn test_general_read_biguint_ok(mode: BERMode) {
     }
 }
 
-#[cfg(feature = "num-bigint")]
+//#[cfg(feature = "num-bigint")]
 fn test_general_read_biguint_err(mode: BERMode) {
     let tests : &[&[u8]] = &[
         &[], &[2], &[0, 0], &[0, 1, 0], &[1, 1, 0], &[34, 1, 0], &[66, 1, 0],
@@ -712,8 +715,8 @@ fn test_general_read_biguint_err(mode: BERMode) {
     }
 }
 
-#[test]
-fn test_der_read_bytes_ok() {
+//#[test]
+pub fn test_der_read_bytes_ok() {
     let tests : &[(&[u8], &[u8])] = &[
         (&[1, 0, 100, 255], &[4, 4, 1, 0, 100, 255]),
         (&[], &[4, 0]),
@@ -727,8 +730,8 @@ fn test_der_read_bytes_ok() {
     }
 }
 
-#[test]
-fn test_der_read_bytes_err() {
+//#[test]
+pub fn test_der_read_bytes_err() {
     let tests : &[&[u8]] = &[
         &[], &[4], &[0, 0], &[0, 1, 0], &[1, 1, 0], &[36, 1, 0], &[68, 1, 0],
         &[4, 4, 0], &[4, 1, 1, 1], &[36, 128, 1, 0, 0],
@@ -750,8 +753,8 @@ fn test_der_read_bytes_err() {
     }
 }
 
-#[test]
-fn test_ber_read_bytes_ok() {
+//#[test]
+pub fn test_ber_read_bytes_ok() {
     let tests : &[(&[u8], &[u8])] = &[
         (&[1, 0, 100, 255], &[4, 4, 1, 0, 100, 255]),
         (&[], &[4, 0]),
@@ -776,8 +779,8 @@ fn test_ber_read_bytes_ok() {
     }
 }
 
-#[test]
-fn test_ber_read_bytes_err() {
+//#[test]
+pub fn test_ber_read_bytes_err() {
     let tests : &[&[u8]] = &[
         &[], &[4], &[0, 0], &[0, 1, 0], &[1, 1, 0], &[36, 1, 0], &[68, 1, 0],
         &[4, 4, 0], &[4, 1, 1, 1], &[4, 128, 1, 0, 0],
@@ -789,16 +792,16 @@ fn test_ber_read_bytes_err() {
     }
 }
 
-#[test]
-fn test_der_read_null_ok() {
+//#[test]
+pub fn test_der_read_null_ok() {
     let value = parse_der(&[5, 0], |reader| {
         reader.read_null()
     }).unwrap();
     assert_eq!(value, ());
 }
 
-#[test]
-fn test_der_read_null_err() {
+//#[test]
+pub fn test_der_read_null_err() {
     let tests : &[&[u8]] = &[
         &[], &[5], &[0, 0], &[0, 1, 0], &[2, 1, 0], &[37, 0], &[69, 0],
         &[5, 128, 0], &[37, 128, 0], &[5, 1, 0], &[5, 2, 0, 0],
@@ -811,16 +814,16 @@ fn test_der_read_null_err() {
     }
 }
 
-#[test]
-fn test_ber_read_null_ok() {
+//#[test]
+pub fn test_ber_read_null_ok() {
     let value = parse_ber(&[5, 0], |reader| {
         reader.read_null()
     }).unwrap();
     assert_eq!(value, ());
 }
 
-#[test]
-fn test_ber_read_null_err() {
+//#[test]
+pub fn test_ber_read_null_err() {
     let tests : &[&[u8]] = &[
         &[], &[5], &[0, 0], &[0, 1, 0], &[2, 1, 0], &[37, 0], &[69, 0],
         &[5, 128, 0], &[37, 128, 0], &[5, 1, 0], &[5, 2, 0, 0],
@@ -833,8 +836,8 @@ fn test_ber_read_null_err() {
     }
 }
 
-#[test]
-fn test_der_read_sequence_ok() {
+//#[test]
+pub fn test_der_read_sequence_ok() {
     let tests : &[((i64, bool), &[u8])] = &[
         ((10, true), &[48, 6, 2, 1, 10, 1, 1, 255]),
         ((266, true), &[48, 7, 2, 2, 1, 10, 1, 1, 255]),
@@ -863,8 +866,8 @@ fn test_der_read_sequence_ok() {
     }
 }
 
-#[test]
-fn test_der_read_sequence_err() {
+//#[test]
+pub fn test_der_read_sequence_err() {
     let tests : &[&[u8]] = &[
         &[], &[48], &[0, 0], &[0, 1, 0],
         &[49, 6, 2, 1, 10, 1, 1, 255],
@@ -896,8 +899,8 @@ fn test_der_read_sequence_err() {
     }
 }
 
-#[test]
-fn test_der_read_tagged_der_err() {
+//#[test]
+pub fn test_der_read_tagged_der_err() {
     let tests : &[&[u8]] = &[
         &[], &[48], &[0, 0], &[0, 1, 0],
         &[48, 6, 2, 1, 10, 1, 1, 255, 0],
@@ -918,8 +921,8 @@ fn test_der_read_tagged_der_err() {
     }
 }
 
-#[test]
-fn test_ber_read_sequence_ok() {
+//#[test]
+pub fn test_ber_read_sequence_ok() {
     let tests : &[((i64, bool),
                   TaggedDerValue,
                   &[u8])] = &[
@@ -977,8 +980,8 @@ fn test_ber_read_sequence_ok() {
     }
 }
 
-#[test]
-fn test_ber_read_sequence_err() {
+//#[test]
+pub fn test_ber_read_sequence_err() {
     let tests : &[&[u8]] = &[
         &[], &[48], &[0, 0], &[0, 1, 0],
         &[49, 6, 2, 1, 10, 1, 1, 255],
@@ -1006,8 +1009,8 @@ fn test_ber_read_sequence_err() {
     }
 }
 
-#[test]
-fn test_der_read_set_ok() {
+//#[test]
+pub fn test_der_read_set_ok() {
     let tests : &[((i64, Vec<u8>, i64, Vec<u8>), &[u8])] = &[
         ((456789, b"Foo".to_vec(), 456790, b"Bar".to_vec()), &[
         49, 32, 187, 5, 2, 3, 6, 248, 86, 156, 3, 6, 248, 85, 191, 149, 140,
@@ -1039,8 +1042,8 @@ fn test_der_read_set_ok() {
     }
 }
 
-#[test]
-fn test_der_read_set_err() {
+//#[test]
+pub fn test_der_read_set_err() {
     let tests : &[&[u8]] = &[
         &[], &[49], &[0, 0], &[0, 1, 0],
         &[17, 32, 187, 5, 2, 3, 6, 248, 86, 156, 3, 6, 248, 85, 191, 149, 140,
@@ -1097,8 +1100,8 @@ fn test_der_read_set_err() {
     }
 }
 
-#[test]
-fn test_ber_read_set_ok() {
+//#[test]
+pub fn test_ber_read_set_ok() {
     let tests : &[((i64, Vec<u8>, i64, Vec<u8>), &[u8])] = &[
         ((456789, b"Foo".to_vec(), 456790, b"Bar".to_vec()), &[
         49, 32, 187, 5, 2, 3, 6, 248, 86, 156, 3, 6, 248, 85, 191, 149, 140,
@@ -1143,8 +1146,8 @@ fn test_ber_read_set_ok() {
     }
 }
 
-#[test]
-fn test_ber_read_set_err() {
+//#[test]
+pub fn test_ber_read_set_err() {
     let tests : &[&[u8]] = &[
         &[], &[49], &[0, 0], &[0, 1, 0],
         &[17, 32, 187, 5, 2, 3, 6, 248, 86, 156, 3, 6, 248, 85, 191, 149, 140,
@@ -1192,8 +1195,8 @@ fn test_ber_read_set_err() {
     }
 }
 
-#[test]
-fn test_der_read_set_of_ok() {
+//#[test]
+pub fn test_der_read_set_of_ok() {
     use std::collections::HashSet;
     let tests : &[(&[i64], &[u8])] = &[
         (&[-129, -128, 127, 128], &[
@@ -1216,8 +1219,8 @@ fn test_der_read_set_of_ok() {
     }
 }
 
-#[test]
-fn test_der_read_set_of_err() {
+//#[test]
+pub fn test_der_read_set_of_err() {
     let tests : &[&[u8]] = &[
         &[], &[49], &[0, 0], &[0, 1, 0],
         &[17, 14, 2, 1, 127, 2, 1, 128, 2, 2, 0, 128, 2, 2, 255, 127],
@@ -1258,8 +1261,8 @@ fn test_der_read_set_of_err() {
     }
 }
 
-#[test]
-fn test_ber_read_set_of_ok() {
+//#[test]
+pub fn test_ber_read_set_of_ok() {
     use std::collections::HashSet;
     let tests : &[(&[i64], &[u8])] = &[
         (&[-129, -128, 127, 128], &[
@@ -1293,8 +1296,8 @@ fn test_ber_read_set_of_ok() {
     }
 }
 
-#[test]
-fn test_ber_read_set_of_err() {
+//#[test]
+pub fn test_ber_read_set_of_err() {
     let tests : &[&[u8]] = &[
         &[], &[49], &[0, 0], &[0, 1, 0],
         &[17, 14, 2, 1, 127, 2, 1, 128, 2, 2, 0, 128, 2, 2, 255, 127],
@@ -1330,8 +1333,8 @@ fn test_ber_read_set_of_err() {
     }
 }
 
-#[test]
-fn test_der_read_tagged_ok() {
+//#[test]
+pub fn test_der_read_tagged_ok() {
     let tests : &[(i64, &[u8])] = &[
         (10, &[163, 3, 2, 1, 10]),
         (266, &[163, 4, 2, 2, 1, 10]),
@@ -1363,8 +1366,8 @@ fn test_der_read_tagged_ok() {
     }
 }
 
-#[test]
-fn test_der_read_tagged_err() {
+//#[test]
+pub fn test_der_read_tagged_err() {
     let tests : &[&[u8]] = &[
         &[], &[163], &[0, 0], &[0, 1, 0], &[160, 3, 2, 1, 10],
         &[35, 3, 2, 1, 10], &[131, 3, 2, 1, 10],
@@ -1410,8 +1413,8 @@ fn test_der_read_tagged_err() {
     }
 }
 
-#[test]
-fn test_ber_read_tagged_ok() {
+//#[test]
+pub fn test_ber_read_tagged_ok() {
     let tests : &[(i64, &[u8])] = &[
         (10, &[163, 3, 2, 1, 10]),
         (266, &[163, 4, 2, 2, 1, 10]),
@@ -1446,8 +1449,8 @@ fn test_ber_read_tagged_ok() {
     }
 }
 
-#[test]
-fn test_ber_read_tagged_err() {
+//#[test]
+pub fn test_ber_read_tagged_err() {
     let tests : &[&[u8]] = &[
         &[], &[163], &[0, 0], &[0, 1, 0], &[160, 3, 2, 1, 10],
         &[35, 3, 2, 1, 10], &[131, 3, 2, 1, 10],
@@ -1490,8 +1493,8 @@ fn test_ber_read_tagged_err() {
     }
 }
 
-#[test]
-fn test_der_read_tagged_implicit_ok() {
+//#[test]
+pub fn test_der_read_tagged_implicit_ok() {
     let tests : &[(i64, &[u8])] = &[
         (10, &[131, 1, 10]),
         (266, &[131, 2, 1, 10]),
@@ -1523,8 +1526,8 @@ fn test_der_read_tagged_implicit_ok() {
     }
 }
 
-#[test]
-fn test_der_read_tagged_implicit_err() {
+//#[test]
+pub fn test_der_read_tagged_implicit_err() {
     let tests : &[&[u8]] = &[
         &[], &[131], &[0, 0], &[0, 1, 0], &[128, 3, 2, 1, 10],
         &[3, 3, 2, 1, 10], &[163, 3, 2, 1, 10],
@@ -1571,8 +1574,8 @@ fn test_der_read_tagged_implicit_err() {
     }
 }
 
-#[test]
-fn test_ber_read_tagged_implicit_ok() {
+//#[test]
+pub fn test_ber_read_tagged_implicit_ok() {
     let tests : &[(i64, &[u8])] = &[
         (10, &[131, 1, 10]),
         (266, &[131, 2, 1, 10]),
@@ -1606,8 +1609,8 @@ fn test_ber_read_tagged_implicit_ok() {
     }
 }
 
-#[test]
-fn test_ber_read_tagged_implicit_err() {
+//#[test]
+pub fn test_ber_read_tagged_implicit_err() {
     let tests : &[&[u8]] = &[
         &[], &[131], &[0, 0], &[0, 1, 0], &[128, 3, 2, 1, 10],
         &[3, 3, 2, 1, 10], &[163, 3, 2, 1, 10],
