@@ -9,6 +9,7 @@
 
 #![allow(missing_docs)]
 
+use std::prelude::v1::*;
 mod error;
 
 #[cfg(feature = "num-bigint")]
@@ -25,7 +26,7 @@ use super::models::{ObjectIdentifier,TaggedDerValue};
 use super::models::{UTCTime,GeneralizedTime};
 pub use self::error::*;
 
-use std::ascii::AsciiExt;
+//use std::ascii::AsciiExt;
 
 /// Parses DER/BER-encoded data.
 ///

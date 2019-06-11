@@ -8,6 +8,7 @@
 
 #![forbid(missing_docs)]
 
+use std::prelude::v1::*;
 #[cfg(feature = "num-bigint")]
 use num_bigint::{BigInt,BigUint};
 #[cfg(feature = "bit-vec")]

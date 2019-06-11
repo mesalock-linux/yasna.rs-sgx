@@ -9,6 +9,7 @@
 
 #![forbid(missing_docs)]
 
+use std::prelude::v1::*;
 #[cfg(feature = "num-bigint")]
 use num_bigint::{BigUint, BigInt};
 #[cfg(feature = "bit-vec")]
@@ -22,7 +23,7 @@ use super::models::{ObjectIdentifier,TaggedDerValue};
 #[cfg(feature = "chrono")]
 use super::models::{UTCTime,GeneralizedTime};
 
-use std::ascii::AsciiExt;
+//use std::ascii::AsciiExt;
 
 /// Constructs DER-encoded data as `Vec<u8>`.
 ///

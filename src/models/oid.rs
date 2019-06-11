@@ -6,6 +6,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use std::prelude::v1::*;
 use std::fmt::{self,Display};
 use std::error::Error;
 use std::str::FromStr;
@@ -128,6 +129,7 @@ impl Error for ParseOidError {
     }
 }
 
+#[allow(deprecated)]
 impl Display for ParseOidError {
     fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
         f.write_str(self.description())
